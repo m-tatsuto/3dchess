@@ -142,10 +142,10 @@ function resetObjectMoveablePosition(){
 
 function setThreeJs3dMapObject() {
 
-  for ( var c3xi = 0; c3xi < 9; c3xi++ ) {
-    for ( var c3yj = 0; c3yj < 9; c3yj++ ) {
-      for ( var c3zk = 0; c3zk < 9; c3zk++ ) {
-        var numberOfMapObject = (c3xi * 81) + (c3yj * 9) + c3zk;
+  for ( var c3xi = 0; c3xi < 8; c3xi++ ) {
+    for ( var c3yj = 0; c3yj < 8; c3yj++ ) {
+      for ( var c3zk = 0; c3zk < 8; c3zk++ ) {
+        var numberOfMapObject = (c3xi * 64) + (c3yj * 8) + c3zk;
 
         if ( mapComa3DObject[ numberOfMapObject ] ) {
           scene.remove( mapComa3DObject[ numberOfMapObject ] );
@@ -157,10 +157,11 @@ function setThreeJs3dMapObject() {
 
           var objectColor = null;
 
+          //駒の色を設定
           if ( mapObject.camp == 0 ) {
-            objectColor = 0xF596AA;
+            objectColor = 0xEEEEEE;
           } else if ( mapObject.camp == 1 ) {
-            objectColor = 0x58B2DC;
+            objectColor = 0x505050;
           }
 
           var coma3dObject = choiceGeometry( mapObject, objectColor );
@@ -194,7 +195,7 @@ function choiceGeometry( comaObj, objectColor ) {
   var comaMaterial = null;
 
   switch( comaObj.name ) {
-    case "歩" :
+    case "Pawn" :
       if ( canUseWebgl ) {
         comaGeometry = new THREE.SphereGeometry( 15, 12, 12 );
         comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
@@ -322,7 +323,7 @@ function choiceGeometry( comaObj, objectColor ) {
 
       break;
 
-    case "玉" :
+    case "WhiteKing" :
       comaGeometry = new THREE.TorusGeometry( 40, 20, 15, 30 );
 
       if ( canUseWebgl ) {
@@ -333,7 +334,7 @@ function choiceGeometry( comaObj, objectColor ) {
 
       break;
 
-    case "王" :
+    case "BlackKing" :
       comaGeometry = new THREE.TorusGeometry( 40, 20, 15, 30 );
 
       if ( canUseWebgl ) {

@@ -1,6 +1,8 @@
 .sentecoma {
 	text-align: center;
 	cursor: pointer;
+	font-family: Chess;
+	font-size: 23px;
 }
 .sentecoma:hover {
 /*
@@ -14,10 +16,19 @@
 	transform: rotate(180deg);
 	text-align: center;
 	cursor: pointer;
+	font-family: Chess;
+	font-size: 23px;
 }
 .gotecoma:hover {
 /*
 	background-color: #dddddd;
 	*/
+}
+
+.zonecoma {
+  text-align: center;
+	cursor: pointer;
+	font-family: Chess;
+  font-size: 18px;
 }
 

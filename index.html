@@ -2,10 +2,11 @@
 <html lang="ja">
 	<head>
 		<meta charset="UTF-8">
-		<title>3次元将棋 空将</title>
+		<title>Space -Third Dimension Chess-</title>
 		<link rel="stylesheet" href="css/coma.css" />
 		<link rel="stylesheet" href="css/buttons.css" />
 		<link rel="stylesheet" href="css/threeJsMap.css" />
+		<link rel="stylesheet" href="css/font.css" />
 		<script type="text/javascript" src="lib/map.js"></script>
 		<script type="text/javascript" src="lib/comaData.js"></script>
 		<script type="text/javascript" src="lib/gameLogic.js"></script>
@@ -18,32 +19,32 @@
 		<script type="text/javascript" src="js/moveComa.js"></script>
 		<script type="text/javascript" src="js/display.js"></script>
 	</head>
-	<body>
-		<p style="position:absolute;left:1250px;">☖</p>
+  <body>
+		<p style="position:absolute;left:1200px;">☖</p>
 		<div style="position:fixed;top:0px;z-index:10;background-color:#EEEEEE;">
-			<a href="comas/?coma=gyoku" class="button blue" target="_blank">各駒動き</a>
-			<span id="turnDiplay" style="background-color:#000000;color:#FFFFFF;padding:4px;font-size:25px;"></span>
-			SelectPosition:<span id="positionValue" ></span>
+      <span id="turnDiplay" style="background-color:#000000;color:#FFFFFF;padding:2px;font-size:20px;"></span>
+			<a href="comas/?coma=gyoku" class="button blue" style="margin-left:30px;" target="_blank">Moves of</a></br>
+      SelectPosition:<span id="positionValue" ></span>
 		</div>
 		<div style="position:fixed;bottom:0px;right:0px;z-index:1;">
 			<span>Copyright (c) 2013 3dshougi developer</span>
-			<button onclick="gameRestart();" style="" class="button red">はじめから</button>
-			<button onclick="loadGame();" style="" class="button blue">つづきから</button>
-			<button onclick="saveGame();" style="" class="button green">保存</button>
+			<button onclick="gameRestart();" style="" class="button red">Reset</button>
+			<button onclick="loadGame();" style="" class="button blue">Load</button>
+			<button onclick="saveGame();" style="" class="button green">Save</button>
 		</div>
 
-		<div id="setcoma" style="position:absolute;left:0px;padding:25px;margin-top:35px;">空盤</div>
-		<div id="zone0Coma" style="position:fixed;left:400px;margin:0 15px;padding:5px;border: 1px solid;">先手持駒</div>
-		<div id="zone1Coma" style="position:fixed;left:485px;margin:0 15px;padding:5px;border: 1px solid;">後手持駒</div>
+		<div id="setcoma" style="position:absolute;left:0px;padding:25px;margin-top:35px;">Space</div>
+		<div id="zone0Coma" style="position:fixed;left:355px;margin:0 15px;padding:5px;border: 1px solid;" class="zonecoma">out Black</div>
+		<div id="zone1Coma" style="position:fixed;left:420px;margin:0 15px;padding:5px;border: 1px solid;" class="zonecoma">out White</div>
 
-		<div style="position:fixed;left:585px;padding:0 20px;" align="center">
+		<div style="position:fixed;left:480px;padding:0 20px;" align="center">
 			<button onclick="swichXviewLeft()" class="button">←</button>
 			<button onclick="swichXviewRight()" class="button">→</button>
 			<button onclick="doCameraForward()" class="button">↑</button>
 			<button onclick="doCameraBackward()" class="button">↓</button>
 			<button onclick="doStop()" class="button">■</button>
-			<button onclick="focusCameraZone0()" class="button red">先手側</button>
-			<button onclick="focusCameraZone1()" class="button blue">後手側</button></br>
+			<button onclick="focusCameraZone0()" class="button red">White Side</button>
+			<button onclick="focusCameraZone1()" class="button blue">Black Side</button></br>
 			<span id="space3d"></span>
 		</div>
 

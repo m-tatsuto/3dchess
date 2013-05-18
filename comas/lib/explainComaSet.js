@@ -23,28 +23,28 @@ function setComaInitObjectInMainMap(){
 
 		if ( param[0] == "coma" ) {
 			switch( param[1] ) {
-				case "fu" :
-				selectObject = new fu(0);
+				case "pawn" :
+				selectObject = new pawn(0);
 				break;
 
-				case "keima" :
-				selectObject = new keima(0);
+				case "rook" :
+				selectObject = new rook(0);
 				break;
 
-				case "kyosha" :
-				selectObject = new kousha(0);
+				case "knight" :
+				selectObject = new knight(0);
 				break;
 
-				case "gin" :
-				selectObject = new gin(0);
+				case "bishop" :
+				selectObject = new bishop(0);
 				break;
 
-				case "kin" :
-				selectObject = new kin(0);
+				case "queen" :
+				selectObject = new queen(0);
 				break;
 
-				case "hisha" :
-				selectObject = new hisha(0);
+				case "whiteKing" :
+				selectObject = new whiteKing(0);
 				break;
 
 				case "ryu" :

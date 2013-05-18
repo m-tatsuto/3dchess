@@ -9,19 +9,19 @@ function mapControllerDisplay(){
 
   var tableHtmlSource = "";
 
-  for(var i = 0; i < 9; i++){
+  for(var i = 0; i < 8; i++){
     tableHtmlSource = "";
     tableHtmlSource += "<table border='1' cellspacing='0' cellpadding='5' >\n";
-    tableHtmlSource += "<tr><th colspan='9'>" + (8 - i) +"層 </th></tr>";
+    tableHtmlSource += "<tr><th colspan='9'>" + (7 - i) +"層 </th></tr>";
 
-    for(var j = 0; j < 9; j++){
+    for(var j = 0; j < 8; j++){
       tableHtmlSource += "<tr>\n";
 
-      for(var h = 0; h < 9; h++){
+      for(var h = 0; h < 8; h++){
         var positionX = h;
-        var positionY = focusViewFlag ? j : (8 - j);
+        var positionY = focusViewFlag ? j : (7 - j);
         //var positionY = 8 - j;
-        var positionZ = 8 - i;
+        var positionZ = 7 - i;
         selectObj = mainGameField.map.cell3d[positionX][positionY][positionZ];
 
         var selectDomComaObjectParam = positionX + ',' + positionY + ',' + positionZ;
@@ -44,9 +44,9 @@ function mapControllerDisplay(){
         if(selectObj !== null){
 
           if ( ( ( selectObj.camp == 0 ) && ( focusViewFlag == 0 ) ) || ( ( selectObj.camp == 1 ) && ( focusViewFlag == 1 ) ) ) {  
-            tableHtmlSource += " <td width='30' height='30' " + moveableColor + " onclick='" + clickfunctionString + "' class='sentecoma'>" + selectObj.name.substring(0,1) + selectObj.camp + "</td>\n";
+            tableHtmlSource += " <td width='30' height='30' " + moveableColor + " onclick='" + clickfunctionString + "' class='sentecoma'>" + displayComaObjectFont(selectObj.name, selectObj.camp) + "</td>\n";
           } else if ( ( ( selectObj.camp == 1 ) && ( focusViewFlag == 0 ) ) || ( ( selectObj.camp == 0 ) && ( focusViewFlag == 1 ) ) ) {
-            tableHtmlSource += " <td width='30' height='30' " + moveableColor + " onclick='" + clickfunctionString + "' class='gotecoma'>" + selectObj.name.substring(0,1) + selectObj.camp + "</td>\n";
+            tableHtmlSource += " <td width='30' height='30' " + moveableColor + " onclick='" + clickfunctionString + "' class='gotecoma'>" + displayComaObjectFont(selectObj.name, selectObj.camp) + "</td>\n";
           }
 
           selectObj = null;
@@ -72,7 +72,7 @@ function mapControllerDisplay(){
   var zone0 = mainGameField.zone0;
   var zone1 = mainGameField.zone1;
   var stockComaCounterZone0 = {
-	  "歩" : 0,
+	  "Pawn" : 0,
 	  "香車" : 0,
 	  "桂馬" : 0,
 	  "銀" : 0,
@@ -81,7 +81,7 @@ function mapControllerDisplay(){
 	  "飛車" : 0
   };
   var stockComaCounterZone1 = {
-	  "歩" : 0,
+	  "Pawn" : 0,
 	  "香車" : 0,
 	  "桂馬" : 0,
 	  "銀" : 0,
@@ -90,27 +90,27 @@ function mapControllerDisplay(){
 	  "飛車" : 0
   };
 
-  document.getElementById("zone0Coma").innerHTML = "先手持駒 </br>";
+  document.getElementById("zone0Coma").innerHTML = "□</br>";
 
   var zone0Len = zone0.stock.length;
   for (var i = 0; i < zone0Len; i++){
     stockComaCounterZone0[ zone0.stock[i].name ]++;
     if ( stockComaCounterZone0[ zone0.stock[i].name ] <= 1 ) {
 	    var functionString = "selectStockTest(0," + i + ")";
-	    document.getElementById("zone0Coma").innerHTML += "<button onclick='" + functionString + "'>" + zone0.stock[i].name + "</button><span id='zone0NumberOf" + zone0.stock[i].name + "'></span></br>";
+	    document.getElementById("zone0Coma").innerHTML +=  displayComaObjectFont(zone0.stock[i].name, 1) + "<span id='zone0NumberOf" + zone0.stock[i].name + "'></span></br>";
     } else if ( stockComaCounterZone0[ zone0.stock[i].name ] > 1 ) {
 	    document.getElementById("zone0NumberOf" + zone0.stock[i].name).innerHTML = "x" + stockComaCounterZone0[ zone0.stock[i].name ];
     }
   }
 
-  document.getElementById("zone1Coma").innerHTML = "後手持駒 </br>";
+  document.getElementById("zone1Coma").innerHTML = "■</br>";
 
   var zone1Len = zone1.stock.length;
   for (var i = 0; i < zone1Len; i++){
     stockComaCounterZone1[ zone1.stock[i].name ]++;
     if ( stockComaCounterZone1[ zone1.stock[i].name ] <= 1 ) {
 	    var functionString = "selectStockTest(1," + i + ")";
-	    document.getElementById("zone1Coma").innerHTML += "<button onclick='" + functionString + "'>" + zone1.stock[i].name + "</button><span id='zone1NumberOf" + zone1.stock[i].name + "'></span></br>";
+	    document.getElementById("zone1Coma").innerHTML += displayComaObjectFont(zone0.stock[i].name, 0) + "<span id='zone1NumberOf" + zone1.stock[i].name + "'></span></br>";
     } else if ( stockComaCounterZone1[ zone1.stock[i].name ] > 1 ) {
 	    document.getElementById("zone1NumberOf" + zone1.stock[i].name).innerHTML = "x" + stockComaCounterZone1[ zone1.stock[i].name ];
     }
@@ -118,9 +118,9 @@ function mapControllerDisplay(){
 
   var turnString = "";
   if (turncamp == 0) {
-    turnString = "先手";
+    turnString = "Turn White";
   } else if (turncamp == 1) {
-    turnString = "後手";
+    turnString = "Turn Black";
   }
 
   document.getElementById("turnDiplay").innerHTML = turnString;
@@ -162,6 +162,16 @@ function gameRestart() {
     resetObjectSelect();  
     resetObjectMoveablePosition();
   }
+}
+
+function displayComaObjectFont(comaName, camp) {
+  var displayFonts = {
+    "Pawn" : { 0 : "p", 1 : "o" },
+    "WhiteKing" : { 0 : "k" },
+    "BlackKing" : { 1 : "l" },
+  };
+
+  return displayFonts[comaName][camp];
 }
 
 window.addEventListener("DOMContentLoaded", mainGameStart, false);
