@@ -73,21 +73,17 @@ function mapControllerDisplay(){
   var zone1 = mainGameField.zone1;
   var stockComaCounterZone0 = {
 	  "Pawn" : 0,
-	  "香車" : 0,
-	  "桂馬" : 0,
-	  "銀" : 0,
-	  "金" : 0,
-	  "角" : 0,
-	  "飛車" : 0
+	  "Knight" : 0,
+	  "Bishop" : 0,
+	  "Rook" : 0,
+	  "Queen" : 0
   };
   var stockComaCounterZone1 = {
 	  "Pawn" : 0,
-	  "香車" : 0,
-	  "桂馬" : 0,
-	  "銀" : 0,
-	  "金" : 0,
-	  "角" : 0,
-	  "飛車" : 0
+	  "Knight" : 0,
+	  "Bishop" : 0,
+	  "Rook" : 0,
+	  "Queen" : 0
   };
 
   document.getElementById("zone0Coma").innerHTML = "□</br>";
@@ -166,7 +162,11 @@ function gameRestart() {
 
 function displayComaObjectFont(comaName, camp) {
   var displayFonts = {
-    "Pawn" : { 0 : "p", 1 : "o" },
+    "Pawn"      : { 0 : "p", 1 : "o" },
+    "Rook"      : { 0 : "r", 1 : "t" },
+    "Knight"    : { 0 : "h", 1 : "j" },
+    "Bishop"    : { 0 : "b", 1 : "n" },
+    "Queen"     : { 0 : "q", 1 : "w" },
     "WhiteKing" : { 0 : "k" },
     "BlackKing" : { 1 : "l" },
   };

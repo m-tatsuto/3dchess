@@ -205,7 +205,7 @@ function choiceGeometry( comaObj, objectColor ) {
       }
       break;
 
-    case "桂馬" :
+    case "Knight" :
       if ( comaObj.camp == 0 ) {
         comaGeometry = new THREE.CylinderGeometry( 10, 20, 30, 8, 1 );
       } else if ( comaObj.camp == 1 ) {
@@ -220,52 +220,7 @@ function choiceGeometry( comaObj, objectColor ) {
 
       break;
 
-    case "香車" :
-      if ( comaObj.camp == 0 ) {
-        comaGeometry = new THREE.CylinderGeometry( 0, 20, 40, 3, 1 );
-      } else if ( comaObj.camp == 1 ) {
-        comaGeometry = new THREE.CylinderGeometry( 20, 0, 40, 3, 1 );
-      }
-
-      if ( canUseWebgl ) {
-        comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
-      } else {
-        comaMaterial = new THREE.MeshBasicMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity } );
-      }
-
-      break;
-
-    case "銀" :
-      if ( canUseWebgl ) {
-        comaGeometry = new THREE.SphereGeometry( 25, 15, 13);
-        comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
-      } else {
-        comaGeometry = new THREE.SphereGeometry( 40, 8, 6);
-        comaMaterial = new THREE.MeshBasicMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity } );
-      }
-      break;
-
-    case "金" :
-      if ( canUseWebgl ) {
-        comaGeometry = new THREE.SphereGeometry( 35, 15, 15 );
-        comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
-      } else {
-        comaGeometry = new THREE.SphereGeometry( 35, 8, 6 );
-        comaMaterial = new THREE.MeshBasicMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity } );
-      }
-      break;
-
-    case "成金" :
-      if ( canUseWebgl ) {
-        comaGeometry = new THREE.SphereGeometry( 35, 15, 15 );
-        comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
-      } else {
-        comaGeometry = new THREE.SphereGeometry( 35, 8, 6 );
-        comaMaterial = new THREE.MeshBasicMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity } );
-      }
-      break;
-
-    case "飛車" :
+    case "Bishop" :
       if ( comaObj.camp == 0 ) {
         comaGeometry = new THREE.CylinderGeometry( 0, 40, 90, 3, 1 );
       } else if ( comaObj.camp == 1 ) {
@@ -279,22 +234,7 @@ function choiceGeometry( comaObj, objectColor ) {
       }
       break;
 
-    case "竜" :
-      if ( comaObj.camp == 0 ) {
-        comaGeometry = new THREE.CylinderGeometry( 0, 40, 90, 5, 1 );
-      } else if ( comaObj.camp == 1 ) {
-        comaGeometry = new THREE.CylinderGeometry( 40, 0, 90, 5, 1 );
-      }
-
-      if ( canUseWebgl ) {
-        comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
-      } else {
-        comaMaterial = new THREE.MeshBasicMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity } );
-      }
-
-      break;
-
-    case "角" :
+    case "Rook" :
       if ( comaObj.camp == 0 ) {
         comaGeometry = new THREE.CylinderGeometry( 15, 30, 70, 4, 1 );
       } else if ( comaObj.camp == 1 ) {
@@ -308,16 +248,12 @@ function choiceGeometry( comaObj, objectColor ) {
       }
       break;
 
-    case "馬" :
-      if ( comaObj.camp == 0 ) {
-        comaGeometry = new THREE.CylinderGeometry( 15, 30, 70, 6, 1 );
-      } else if ( comaObj.camp == 1 ) {
-        comaGeometry = new THREE.CylinderGeometry( 30, 15, 70, 6, 1 );
-      }
-
+    case "Queen" :
       if ( canUseWebgl ) {
+        comaGeometry = new THREE.SphereGeometry( 35, 15, 15 );
         comaMaterial = new THREE.MeshLambertMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity, shading: THREE.FlatShading } );
       } else {
+        comaGeometry = new THREE.SphereGeometry( 35, 8, 6 );
         comaMaterial = new THREE.MeshBasicMaterial( { color: objectColor,  transparent: true, opacity: comaObjectOpacity } );
       }
 
