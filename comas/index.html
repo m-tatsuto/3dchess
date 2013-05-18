@@ -1,66 +1,66 @@
 <!DOCTYPE HTML>
 <html lang="ja">
-	<head>
-		<meta charset="UTF-8">
-		<title>3次元将棋 空将(各駒の説明)</title>
-		<link rel="stylesheet" href="css/coma.css" />
-		<link rel="stylesheet" href="css/buttons.css" />
-		<link rel="stylesheet" href="css/threeJsMap.css" />
-		<link rel="stylesheet" href="css/font.css" />
-		<script type="text/javascript" src="../lib/map.js"></script>
-		<script type="text/javascript" src="../lib/comaData.js"></script>
-		<script type="text/javascript" src="../lib/gameLogic.js"></script>
-		<script type="text/javascript" src="../lib/threejs/three.min.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <title>Space -Explain-</title>
+    <link rel="stylesheet" href="css/coma.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
+    <link rel="stylesheet" href="css/threeJsMap.css" />
+    <link rel="stylesheet" href="css/font.css" />
+    <script type="text/javascript" src="../lib/map.js"></script>
+    <script type="text/javascript" src="../lib/comaData.js"></script>
+    <script type="text/javascript" src="../lib/gameLogic.js"></script>
+    <script type="text/javascript" src="../lib/threejs/three.min.js"></script>
     <script type="text/javascript" src="lib/explainComaSet.js"></script>
     <script type="text/javascript" src="js/selectComa.js"></script>
-		<script type="text/javascript" src="js/stockComa.js"></script>
-		<script type="text/javascript" src="js/gameStrat.js"></script>
-		<script type="text/javascript" src="js/saveGame.js"></script>
-		<script type="text/javascript" src="js/moveComa.js"></script>
-		<script type="text/javascript" src="js/display.js"></script>
-	</head>
-	<body>
-		<div style="position:fixed;top:0px;z-index:10;background-color:#EEEEEE;">
-			<span id="turnDiplay" style="display:none;"></span>
-			<a href=".." class="button red">TOP</a>
-			SelectPosition:<span id="positionValue" ></span>
-		</div>
+    <script type="text/javascript" src="js/stockComa.js"></script>
+    <script type="text/javascript" src="js/gameStrat.js"></script>
+    <script type="text/javascript" src="js/saveGame.js"></script>
+    <script type="text/javascript" src="js/moveComa.js"></script>
+    <script type="text/javascript" src="js/display.js"></script>
+  </head>
+  <body>
+    <div style="position:fixed;top:0px;z-index:10;background-color:#EEEEEE;">
+      <span id="turnDiplay" style="display:none;"></span>
+      <a href=".." class="button red">TOP</a>
+      SelectPosition:<span id="positionValue" ></span>
+    </div>
 
-		<div id="setcoma" style="position:absolute;left:0px;padding:30px;">空盤</div>
-		<div id="comaButtons" style="position:fixed;left:370px;margin:15px;padding:5px;">
-			<a href="?coma=pawn" class="button glay">Pawn</a></br></br>
-			<a href="?coma=rook" class="button glay">Rook</a></br></br>
-			<a href="?coma=knight" class="button glay">Knight</a></br></br>
-			<a href="?coma=bishop" class="button glay">Bishop</a></br></br>
-			<a href="?coma=queen" class="button glay">Queen</a></br></br>
-			<a href="?coma=whiteKing" class="button glay">WhiteKing</a></br></br>
-		</div>
+    <div id="setcoma" style="position:absolute;left:0px;padding:30px;">空盤</div>
+    <div id="comaButtons" style="position:fixed;left:370px;margin:15px;padding:5px;">
+      <a href="?coma=pawn" class="button glay">Pawn</a></br></br>
+      <a href="?coma=rook" class="button glay">Rook</a></br></br>
+      <a href="?coma=knight" class="button glay">Knight</a></br></br>
+      <a href="?coma=bishop" class="button glay">Bishop</a></br></br>
+      <a href="?coma=queen" class="button glay">Queen</a></br></br>
+      <a href="?coma=whiteKing" class="button glay">WhiteKing</a></br></br>
+    </div>
 
-		<div style="position:fixed;left:520px;padding:0 20px;" align="center">
-			<button onclick="swichXviewLeft()" class="button">←</button>
-			<button onclick="swichXviewRight()" class="button">→</button>
-			<button onclick="doCameraForward()" class="button">↑</button>
-			<button onclick="doCameraBackward()" class="button">↓</button>
-			<button onclick="doStop()" class="button">■</button>
-			<button onclick="focusCameraZone0()" class="button red">White Side</button>
-			<button onclick="focusCameraZone1()" class="button blue">Black Side</button></br>
-			<span id="space3d"></span>
-		</div>
+    <div style="position:fixed;left:520px;padding:0 20px;" align="center">
+      <button onclick="swichXviewLeft()" class="button">←</button>
+      <button onclick="swichXviewRight()" class="button">→</button>
+      <button onclick="doCameraForward()" class="button">↑</button>
+      <button onclick="doCameraBackward()" class="button">↓</button>
+      <button onclick="doStop()" class="button">■</button>
+      <button onclick="focusCameraZone0()" class="button red">White Side</button>
+      <button onclick="focusCameraZone1()" class="button blue">Black Side</button></br>
+      <span id="space3d"></span>
+    </div>
 
-		<script type="text/javascript" src="../threeJs_lib/threeJs_animation.js"></script>
-		<script type="text/javascript" src="../threeJs_lib/threeJs_objectModel.js"></script>
-		<script type="text/javascript" src="../threeJs_lib/threeJs_viewController.js"></script>
-		<script type="text/javascript" src="../threeJs_lib/threeJs_main.js"></script>
-		<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-29429033-3']);
-		_gaq.push(['_trackPageview']);
+    <script type="text/javascript" src="../threeJs_lib/threeJs_animation.js"></script>
+    <script type="text/javascript" src="../threeJs_lib/threeJs_objectModel.js"></script>
+    <script type="text/javascript" src="../threeJs_lib/threeJs_viewController.js"></script>
+    <script type="text/javascript" src="../threeJs_lib/threeJs_main.js"></script>
 
-		(function() {
-		 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		 })();
-		</script>
-	</body>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-29429033-5', 'knowpic.com');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
 </html>
